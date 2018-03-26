@@ -1,0 +1,20 @@
+Skaianet Development Activity Log
+-----
+2018-03-18: move passwords out of hardcoding, stitch some sql holes
+2018-03-18: Mozai discovers this log, backfiles changes
+2018-03-18: Stronger test-suite for skaianet.py
+2018-03-17: Db fields 'filepath' and 'artwork' are now relative paths
+2018-03-20: Added db field 'website' and link icon for music artist webpages
+2018-03-17: New file 'embed.php' for the skaia minecraft players
+2018-02-24: Recent songs ui now includes number of listeners
+2017-12-19: Requests ui is now searchable
+2017-08-01: Moving to new hosting (testing)
+2017-07-13: Brought Mozai on as staff
+2015-05-14: Skaia.net/staff updated to include Kino
+2015-04-20: Revised http://skaia.net/faq
+2015-04-19: Fixed recent songs page URL, now accessible at http://radio.skaia.net/recent or http://skaia.net/recent
+2015-04-19: Twitter card information added to http://radio.skaia.net/, nice links show up when you post this link on twitter now.
+2015-04-19: Performed database maintainence, added some more album art
+2015-04-19: Music database table modifed to support changing metadata on MP3 files
+2015-04-19: Facebook page created: http://fb.me/SkaianetRadio
+2015-04-19: Opengraph information added to http://radio.skaia.net/, posting this link now shows a pretty blurb about the radio page on Facebook and Google+!

@@ -1,0 +1,11 @@
+User-agent: *
+Allow: *
+
+# User-Agent: Aradiabot
+# Allow: *
+# User-Agent: Jadebot
+# Allow: *
+# User-Agent: Dirkbot
+# Allow: *
+# User-Agent: Lil' Sebastien
+# Allow: *

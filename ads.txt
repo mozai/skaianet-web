@@ -1,0 +1,4 @@
+# ads.txt for radio.skaia.net
+#  see https://iabtechlab.com/ads-txt/
+#  ... no authorized advertisers yet.
+CONTACT="Speak to Mozai (Moses Moore) or to Kitty (George Burfeind)"

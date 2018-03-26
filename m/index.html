@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#E91E63">
+        <title>Skaianet Radio (BETA)</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+        
+        <!-- Material Design CSS -->
+        <link rel="stylesheet" href="css/vendor/material-wfont.min.css">
+        <link rel="stylesheet" href="css/vendor/ripples.min.css">
+        <link rel="stylesheet" href="css/vendor/snackbar.min.css">
+        
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="css/skaianet.css">
+
+        <!-- Mondernizer JS and Respond JS -->
+        <script src="js/vendor/modernizr.min.js"></script>
+        <script src="js/vendor/respond.min.js"></script>
+    </head>
+    <body>
+        <div id="radio-container" style="display:none;"></div>
+        <div class="container-fluid">
+            <!-- Canvas (Spectrum) -->
+            <canvas class="canvas-section" id="spectrum" style="display:none;"></canvas>
+            
+            <!-- Metadata -->
+            <div class="metadata-section">
+                <div class="panel panel-material-pink" id="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title" style="font-size:18pt;">Skaianet Radio</h3>
+                    </div>
+                    <div class="panel-body">
+                        <span id="curSong">Loading...</span><br>
+                        <b>Artist:</b> <span id="curArtist">Loading...</span><br>
+                        <b>Album:</b> <span id="curAlbum">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Alerts -->
+            <div class="alert-section" style="visibility:hidden;"></div>
+            
+            <!-- Radio -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                
+                    <!-- Play/Pause -->
+                    <div class="playback-control-section">
+                        <div class="playback-control">
+                            <a href="javascript:void(0);" class="btn btn-material-grey-100 btn-block btn-lg btn-raised" id="playback-control"><span class="mdi-av-pause"></span></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Volume Control -->
+                    <div class="volume-control-section">
+                        <div class="slider shor slider-material-pink" id="volume-control" onchange="setVolume()"></div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- ./container-fluid -->
+        
+        <!-- jQuery 2.x JS -->
+        <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.3.js"><\/script>')</script>
+        
+        <!-- Bootstrap JS -->
+        <script src="js/vendor/bootstrap.min.js"></script>
+        
+        <!-- Material Design JS -->
+        <script src="js/vendor/material.min.js"></script>
+        <script src="js/vendor/ripples.min.js"></script>
+        <script src="js/vendor/jquery.nouislider.all.min.js"></script>
+        <script src="js/vendor/snackbar.min.js"></script>
+        
+        <!-- Main JS -->
+        <script src="js/skaianet.js"></script>
+
+        <!-- Google Analytics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-37431936-4', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>
+

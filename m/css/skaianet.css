@@ -1,0 +1,57 @@
+body {
+    font-family: RobotoDraft, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+}
+
+iframe, img, embed {
+    border: none;
+}
+
+.btn-sq {
+    width: 128px;
+    height: 128px;
+    font-size: 32pt;
+    border-radius: 6px;
+}
+
+.playback-control-section {
+    width: auto;
+    padding-bottom: 4px;
+}
+
+.metadata-section {
+    width: 100%;
+    height: auto;
+}
+
+.volume-control-section {
+    width: 100%;
+    height: auto;
+}
+
+#header {
+    width: 100%;
+    height: auto;
+}
+
+#body {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+#panel {
+    width: auto;
+    font-size: 12pt;
+}
+
+#playback-control {
+    padding: 24px;
+     font-size: 24pt;
+}
