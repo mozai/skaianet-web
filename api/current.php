@@ -1,6 +1,6 @@
 <?php
     header('Content-Type: application/json');
-    require_once('config.php');
+    require_once('../config.php');
     $defaultalbumart = ALBUMART_URL . 'none.png';
 
     $db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME .';charset=utf8', DB_USER , DB_PASS);

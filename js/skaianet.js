@@ -40,7 +40,7 @@ function removeAlert() {
 }
 
 function updateAlert() {
-    $.getJSON("/current.php", function(data) {
+    $.getJSON("/api/current.php", function(data) {
         if (data['notifytext'] && data['notifytype'] > 0) {
             if (data['notifytype'] == 1)
                 setAlert("info", data['notifytext'], false);
@@ -57,7 +57,7 @@ function updateAlert() {
 }
 
 function updateMetadata() {
-    $.getJSON("/current.php", function(data) {
+    $.getJSON("/api/current.php", function(data) {
         if (data['reqname']) {
             $('#curSong')[0].innerHTML = "<span class=\"label label-material-green\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"\" data-original-title=\"Requested by: " + data['reqname'] + "\">Request</span> " + data['title'];
             $('[data-toggle="tooltip"]').tooltip();
