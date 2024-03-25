@@ -1,23 +1,24 @@
 <?php
-require_once('../config.php');
-header('Content-Type: application/json');
-$db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME .';charset=utf8', DB_USER , DB_PASS);
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+/* what's the most recent song */
+// I forget what this was for; /api/current should give the same info
 
-$cur = $db->prepare("SELECT songid, title, artist, album, length, reqname, " .
+require_once('config.php');
+
+$cur = $DB->prepare("SELECT songid, title, artist, album, length, reqname, " .
                     "time FROM recent ORDER BY id DESC LIMIT 1");
 $cur->execute();
+
 if ($cur->rowCount() != 1) {
-    $answer = array('success' => 0, 'title' => "failed to get recent
-    song", 'artist' => 'unknown', 'album' => 'unknown', 'length' => -1,
-    'reqname' => '');
+    $answer = array('success' => 0, 'title' => "failed to get recent song",
+    'artist' => 'unknown', 'album' => 'unknown', 'length' => -1, 'reqname' => '');
 }
 else {
-    $recent=$cur->fetch(PDO::FETCH_ASSOC);
-    $recent["success"] = 1;
-    $answer = $recent;
+    $answer = $cur->fetch(PDO::FETCH_ASSOC);
+    $answer["success"] = 1;
 }
 $answer["time"] = strtotime($recent["time"]);
+
+// do the windy thing
+header('Content-Type: application/json');
 echo json_encode($answer);
 
