@@ -1,5 +1,8 @@
 Skaianet Development Activity Log
 -----
+2024-03-19: Mozai forgot about this changelog, oops.
+2024-03-19: moved admin.skaia.net to radio.skaia.net/admin/
+2018-04-13: request UI is now available; set to throttle to 2 queued per user
 2018-03-18: move passwords out of hardcoding, stitch some sql holes
 2018-03-18: Mozai discovers this log, backfiles changes
 2018-03-18: Stronger test-suite for skaianet.py
