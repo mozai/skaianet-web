@@ -36,26 +36,18 @@
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:500,300,700,400">
         
         <style>
-            body {
-                padding-top: 20px;
-                padding-bottom: 20px;
-                font-family: Roboto;
-            }
-            
-            th {
-                cursor: pointer;
-            }
-            
-            .link-material-blue {
-                color: #2196f3;
-            }
-            
-            .link-material-blue:hover {
-                color: #2196f3;
-            }
-            table#songlist tbody tr td {
-                vertical-align: middle;
-            }
+            body { padding-top: 20px; padding-bottom: 20px; font-family: Roboto; }
+            th { cursor: pointer; }
+            .link-material-blue { color: #2196f3; }
+            .link-material-blue:hover { color: #2196f3; }
+            table#songlist tbody tr td { vertical-align: middle; }
+            .albumicon { position:relative; display:inline-block; margin:0; padding:0; }
+            .albumicon a { text-decoration: none; }
+            .albumicon .tooltip { visibility:hidden; opacity:0;
+              text-align:center; padding: 5px 0; position: absolute;
+              z-index: 1; bottom: 125%; left: 50%; 
+              height: 150px; width: 150px; }
+            .albumicon:hover .tooltip { visibility: visible; opacity: 1; }
         </style>
         
         <!-- Mondernizer JS and Respond JS -->
@@ -84,6 +76,7 @@
                         <thead>
                             <tr>
                                 <th>Title</th>
+                                <th>&#x1F3A8;</th>
                                 <th>Album</th>
                                 <th>Artist</th>
                                 <th>Request</th>
@@ -94,6 +87,16 @@
                             foreach ($songs as $song) {
                                 echo "<tr>";
                                 echo "<td>" . $song["title"] . "</td>";
+                                if($song["albumart"]) {
+                                    $i = $song["albumart"];
+                                    if(strpos($i, '/') === false) {
+                                        $i = "//radio.skaia.net/img/artwork/$i";
+                                    }
+                                    echo "<td><p class=albumicon><a href=\"$i\" target=_blank>&#x1F3A8;</a><img loading=lazy class=tooltip src=\"$i\"></p></td>";
+                                }
+                                else {
+                                    echo "<td>&nbsp;</td>";
+                                }
                                 echo "<td>" . $song["album"] . "</td>";
                                 echo "<td>" . $song["artist"] . "</td>";
                                 echo "<td><button type=submit name=request-button-" . $song["id"] . " ";
@@ -127,15 +130,5 @@
         <!-- Main JS -->
         <script src="js/request.js"></script>
 
-        <!-- Google Analytics -->
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-37431936-4', 'auto');
-            ga('send', 'pageview');
-        </script>
     </body>
 </html>
