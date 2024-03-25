@@ -96,11 +96,20 @@ iframe, img, embed {
     left: 0;
 }
 
+.request-section {
+    width: 140px;
+    text-align:center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin:0; padding:0;
+}
+
 .alert-section {
     width: auto;
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 160px;
 }
 
 #header {
@@ -123,4 +132,8 @@ iframe, img, embed {
 
 #alert {
     font-size: 11pt;
+}
+
+table#songlist tbody tr td {
+  vertical-align:middle;
 }
