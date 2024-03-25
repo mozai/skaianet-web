@@ -19,8 +19,7 @@ canvas_context = canvas.getContext('2d');
 
 // audio stuff
 var audio = new Audio();
-//var audioSrc = 'http://stream.skaia.net/radio.mp3';
-var audioSrc = 'http://stream.skaia.net/radio.mp3';
+var audioSrc = '//stream.skaia.net/radio.mp3';
 audio.src = audioSrc;
 audio.controls = false;
 audio.autoplay = true;

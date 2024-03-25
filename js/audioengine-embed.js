@@ -5,7 +5,7 @@ function initAudio() {
     audio5js = new Audio5js({
         ready: function() {
             // this.load('http://stream.skaia.net/radio.mp3');
-            this.load('http://stream.skaia.net/radio.mp3');
+            this.load('//stream.skaia.net/radio.mp3');
             this.volume($("#volume-control").val() / 100);
             this.play();
         }

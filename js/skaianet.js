@@ -39,25 +39,9 @@ function removeAlert() {
     $('.alert-section')[0].innerHTML = "";
 }
 
-function updateAlert() {
+function updatePlayerStatus() {
     $.getJSON("/api/current.php", function(data) {
-        if (data['notifytext'] && data['notifytype'] > 0) {
-            if (data['notifytype'] == 1)
-                setAlert("info", data['notifytext'], false);
-            else if (data['notifytype'] == 2)
-                setAlert("success", data['notifytext'], false);
-            else if (data['notifytype'] == 3)
-                setAlert("warning", data['notifytext'], false);
-            else if (data['notifytype'] == 4)
-                setAlert("error", data['notifytext'], false);
-        } else {
-            removeAlert();
-        }
-    });
-}
-
-function updateMetadata() {
-    $.getJSON("/api/current.php", function(data) {
+        // update current song info
         if (data['reqname']) {
             $('#curSong')[0].innerHTML = "<span class=\"label label-material-green\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"\" data-original-title=\"Requested by: " + data['reqname'] + "\">Request</span> " + data['title'];
             $('[data-toggle="tooltip"]').tooltip();
@@ -77,12 +61,43 @@ function updateMetadata() {
             $('#website')[0].href = '#';
             $('#website')[0].target = '';
         }
-        songLength = data['length'];
-        songPosition = (data['time'] - Math.floor(Date.now() / 1000)) * -1;
         if ($('#album-art')[0].src != data['albumart']) {
+            // don't change unless we need to; prevents flickering
             $('#album-art')[0].src = data['albumart'];
         }
+        songLength = data['length'];
+        songPosition = (data['time'] - Math.floor(Date.now() / 1000)) * -1;
         updateProgress();
+
+        if ('req_count' in data) {
+            $('.request-section').css('visibility', 'visible');
+            if(data['req_count'] == 0) {
+                $('.request-section')[0].innerHTML = "<a target=_blank href=/request.php class=\"btn btn-material-blue btn-blockbutton-material-blue\" id=request>Requests</button>";
+            }
+            else if (data['req_count'] > 0 && data['req_count'] < 5) {
+                $('.request-section')[0].innerHTML = "<a target=_blank href=/request.php class=\"btn btn-material-blue btn-blockbutton-material-blue\" id=request>Requests: " + data['req_count'] +"</button>";
+            }
+            else {
+                $('.request-section')[0].innerHTML = "<a href=# class=\"btn btn-material-grey btn-blockbutton-material-grey\" id=request>Requests: " + data['req_count'] +"</a>";
+            }
+        }
+        else {
+            $('.request-section').css('visibility', 'hidden');
+        }
+
+        // alert status; info, success, warn, error
+        if (data['notifytext'] && data['notifytype'] > 0) {
+            if (data['notifytype'] == 1)
+                setAlert("info", data['notifytext'], false);
+            else if (data['notifytype'] == 2)
+                setAlert("success", data['notifytext'], false);
+            else if (data['notifytype'] == 3)
+                setAlert("warning", data['notifytext'], false);
+            else if (data['notifytype'] == 4)
+                setAlert("error", data['notifytext'], false);
+        } else {
+            removeAlert();
+        }
     });
 }
 
@@ -90,7 +105,7 @@ function updateProgress() {
     songPercent = (songPosition / songLength) * 100;
     if (songPercent >= 100) {
         if (upToDate == true) {
-            setTimeout(updateMetadata, 500);
+            setTimeout(updatePlayerStatus, 500);
         }
         upToDate = false;
         songPercent = 100;
@@ -100,17 +115,13 @@ function updateProgress() {
     $('.progress-bar').css('width', songPercent + '%').attr('aria-valuenow', songPercent);
 }
 
-var autoRefresh = setInterval(function() {
-    updateAlert();
-    updateMetadata();
-}, 10000);
+/* TODO something better than pulling ever 5 or 10 seconds. websockets? */
+var autoRefresh = setInterval(function() { updatePlayerStatus(); }, 5000);
 
 var autoTimer = setInterval(function() {
     songPosition = songPosition + 0.3;
-    if (songPosition >= 0) {
+    if (songPosition >= 0)
         updateProgress();
-    }
-}, 300);
+    }, 300);
 
-updateAlert();
-updateMetadata();
+updatePlayerStatus();
