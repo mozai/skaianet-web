@@ -27,7 +27,7 @@ include('inc/header.php');
     <a class="btn btn-default">Edit Metadata</a> <button type="button" class="btn btn-default" data-toggle="modal" data-target="#skipSongConfirm">Skip Song</a>
   </div>
   <div class="col-sm-8 col-lg-9">
-    <iframe id="theIframe" src="//radio.skaia.net/recent.php" style="width:100%;height:800px"></iframe>
+    <iframe id="theIframe" src="//radio.skaia.net/api/recent.php" style="width:100%;height:800px"></iframe>
   </div>
 </div>
 <div class="modal fade" id="skipSongConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
