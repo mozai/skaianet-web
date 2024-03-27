@@ -56,7 +56,7 @@
             <th>Title</th>
             <th>Album</th>
             <th>Artist</th>
-            <th>Listeners</th>
+            <!-- <th>Listeners</th> -->
           </tr></thead>
           <tbody>
             <?php
@@ -73,7 +73,7 @@
                 echo "<td>" . $song["title"] . "</td>\n";
               echo "<td>" . $song["album"] . "</td>\n";
               echo "<td>" . $song["artist"] . "</td>\n";
-              echo "<td>" . ($song["listeners"] ?? '--') . "</td>\n";
+              echo "<!--<td>" . ($song["listeners"] ?? '--') . "</td>-->\n";
               echo "</tr>\n";
               $i++;
             }

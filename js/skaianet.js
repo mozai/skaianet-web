@@ -85,6 +85,12 @@ function updatePlayerStatus() {
             $('.request-section').css('visibility', 'hidden');
         }
 
+        // link to recent songs playlist
+        /* if recent songs list > 0 */
+            $('.recent-section').css('visibility', 'visible');
+            $('.recent-section')[0].innerHTML = "<a target=_blank href=/recent.php class=\"btn btn-material-blue btn-blockbutton-material-blue\" id=recent>Recent</button>";
+        /*} */
+
         // alert status; info, success, warn, error
         if (data['notifytext'] && data['notifytype'] > 0) {
             if (data['notifytype'] == 1)
